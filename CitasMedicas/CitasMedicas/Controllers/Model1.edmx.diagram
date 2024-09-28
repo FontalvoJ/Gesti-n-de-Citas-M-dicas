@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="29f0e08583684163963b4a828254dae1" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_GestionCitasModel.Citas" Width="1.5" PointX="4.375" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_GestionCitasModel.Personas" Width="1.5" PointX="0.875" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_GestionCitasModel.Recetas" Width="1.5" PointX="2.25" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="DB_GestionCitasModel.FK__Citas__id_medico__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_GestionCitasModel.FK__Citas__id_pacien__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_GestionCitasModel.FK__Recetas__id_paci__4CA06362" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

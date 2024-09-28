@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_GestionCitasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Citas">
+    <Key>
+      <PropertyRef Name="id_cita" />
+    </Key>
+    <Property Name="id_cita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha_cita" Type="datetime" Nullable="false" />
+    <Property Name="lugar" Type="varchar" MaxLength="100" />
+    <Property Name="id_paciente" Type="int" Nullable="false" />
+    <Property Name="id_medico" Type="int" Nullable="false" />
+    <Property Name="estado_cita" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="receta_generada" Type="bit" />
+  </EntityType>
+  <EntityType Name="Personas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="telefono" Type="varchar" MaxLength="15" />
+    <Property Name="tipo_persona" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="correo" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Recetas">
+    <Key>
+      <PropertyRef Name="id_receta" />
+    </Key>
+    <Property Name="id_receta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigo_receta" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_paciente" Type="int" Nullable="false" />
+    <Property Name="medicamentos" Type="text" Nullable="false" />
+    <Property Name="estado_receta" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="fecha_creacion" Type="datetime" />
+    <Property Name="fecha_vencimiento" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__Citas__id_medico__45F365D3">
+    <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+    <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="id_medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Citas__id_pacien__44FF419A">
+    <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+    <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="id_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Recetas__id_paci__4CA06362">
+    <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+    <End Role="Recetas" Type="Self.Recetas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Recetas">
+        <PropertyRef Name="id_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_GestionCitasModelStoreContainer">
+    <EntitySet Name="Citas" EntityType="Self.Citas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Recetas" EntityType="Self.Recetas" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Citas__id_medico__45F365D3" Association="Self.FK__Citas__id_medico__45F365D3">
+      <End Role="Personas" EntitySet="Personas" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Citas__id_pacien__44FF419A" Association="Self.FK__Citas__id_pacien__44FF419A">
+      <End Role="Personas" EntitySet="Personas" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Recetas__id_paci__4CA06362" Association="Self.FK__Recetas__id_paci__4CA06362">
+      <End Role="Personas" EntitySet="Personas" />
+      <End Role="Recetas" EntitySet="Recetas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

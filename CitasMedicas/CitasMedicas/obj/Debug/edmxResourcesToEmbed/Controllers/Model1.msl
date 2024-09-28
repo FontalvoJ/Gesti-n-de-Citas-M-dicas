@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_GestionCitasModelStoreContainer" CdmEntityContainer="DB_GestionCitasEntities">
+    <EntitySetMapping Name="Citas">
+      <EntityTypeMapping TypeName="DB_GestionCitasModel.Citas">
+        <MappingFragment StoreEntitySet="Citas">
+          <ScalarProperty Name="id_cita" ColumnName="id_cita" />
+          <ScalarProperty Name="fecha_cita" ColumnName="fecha_cita" />
+          <ScalarProperty Name="lugar" ColumnName="lugar" />
+          <ScalarProperty Name="id_paciente" ColumnName="id_paciente" />
+          <ScalarProperty Name="id_medico" ColumnName="id_medico" />
+          <ScalarProperty Name="estado_cita" ColumnName="estado_cita" />
+          <ScalarProperty Name="receta_generada" ColumnName="receta_generada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personas">
+      <EntityTypeMapping TypeName="DB_GestionCitasModel.Personas">
+        <MappingFragment StoreEntitySet="Personas">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="tipo_persona" ColumnName="tipo_persona" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recetas">
+      <EntityTypeMapping TypeName="DB_GestionCitasModel.Recetas">
+        <MappingFragment StoreEntitySet="Recetas">
+          <ScalarProperty Name="id_receta" ColumnName="id_receta" />
+          <ScalarProperty Name="codigo_receta" ColumnName="codigo_receta" />
+          <ScalarProperty Name="id_paciente" ColumnName="id_paciente" />
+          <ScalarProperty Name="medicamentos" ColumnName="medicamentos" />
+          <ScalarProperty Name="estado_receta" ColumnName="estado_receta" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
