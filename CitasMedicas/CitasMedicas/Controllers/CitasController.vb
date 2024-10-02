@@ -38,7 +38,7 @@ Namespace Controllers
             End If
 
             If Not id = citas.id_cita Then
-                Return BadRequest("El ID de la cita no coincide con el ID proporcionado.")
+                Return BadRequest()
             End If
 
             db.Entry(citas).State = EntityState.Modified
@@ -46,14 +46,14 @@ Namespace Controllers
             Try
                 db.SaveChanges()
             Catch ex As DbUpdateConcurrencyException
-                If Not CitasExists(id) Then
+                If Not (CitasExists(id)) Then
                     Return NotFound()
                 Else
                     Throw
                 End If
             End Try
 
-            Return Ok("Cita actualizada correctamente.")
+            Return StatusCode(HttpStatusCode.NoContent)
         End Function
 
         ' POST: api/Citas
@@ -66,7 +66,7 @@ Namespace Controllers
             db.Citas.Add(citas)
             db.SaveChanges()
 
-            Return CreatedAtRoute("DefaultApi", New With {.id = citas.id_cita}, citas, "Cita creada exitosamente.")
+            Return CreatedAtRoute("DefaultApi", New With {.id = citas.id_cita}, citas)
         End Function
 
         ' DELETE: api/Citas/5
@@ -80,7 +80,7 @@ Namespace Controllers
             db.Citas.Remove(citas)
             db.SaveChanges()
 
-            Return Ok("Cita eliminada exitosamente.")
+            Return Ok(citas)
         End Function
 
         Protected Overrides Sub Dispose(ByVal disposing As Boolean)
